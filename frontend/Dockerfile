@@ -1,13 +1,13 @@
-# Use Bun as the base image
-FROM oven/bun:1.2-debian AS base
+# Use Node.js as the base image
+FROM node:18-alpine AS base
 
 # Dependencies stage
 FROM base AS deps
 WORKDIR /app
 
-# Copy package.json and bun.lockb
-COPY package.json bun.lock* ./
-RUN bun install --frozen-lockfile
+# Copy package.json and lock files
+COPY package.json package-lock.json ./
+RUN npm ci --only=production
 
 # Builder stage
 FROM base AS builder
@@ -17,7 +17,7 @@ COPY . .
 
 # Build the Next.js app
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN bun run build
+RUN npm run build
 
 # Runner stage
 FROM base AS runner
@@ -43,4 +43,4 @@ ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
 # Start the application
-CMD ["bun", "server.js"]
+CMD ["node", "server.js"]
