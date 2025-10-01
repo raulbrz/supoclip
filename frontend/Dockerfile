@@ -7,13 +7,16 @@ WORKDIR /app
 
 # Copy package.json and lock files
 COPY package.json package-lock.json ./
-RUN npm ci --only=production
+RUN npm ci --include=dev
 
 # Builder stage
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
+# Generate Prisma client
+RUN npx prisma generate
 
 # Build the Next.js app
 ENV NEXT_TELEMETRY_DISABLED=1
