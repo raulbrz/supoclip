@@ -1,5 +1,8 @@
-# Use Node.js as the base image
-FROM node:18-alpine AS base
+# Use Node.js as the base image (using debian instead of alpine for better compatibility)
+FROM node:18-slim AS base
+
+# Install OpenSSL for Prisma
+RUN apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 
 # Dependencies stage
 FROM base AS deps
@@ -7,7 +10,7 @@ WORKDIR /app
 
 # Copy package.json and lock files
 COPY package.json package-lock.json ./
-RUN npm ci --include=dev
+RUN npm install --include=dev
 
 # Builder stage
 FROM base AS builder

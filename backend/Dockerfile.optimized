@@ -13,11 +13,9 @@ WORKDIR /app
 # Copy requirements first for better caching
 COPY requirements.txt ./
 
-# Upgrade pip and install Python dependencies with timeout settings
-RUN pip install --upgrade pip && \
-    pip install --timeout 1000 -r requirements.txt && \
-    pip install --timeout 1000 --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu && \
-    pip install --timeout 1000 openai-whisper
+# Install Python dependencies with cache for faster rebuilds
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 # Copy source code
 COPY src/ ./src/

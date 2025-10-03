@@ -17,7 +17,7 @@ yt-dlp>=2025.7.21
 moviepy>=2.2.1
 
 # AI and transcription (lighter versions)
-openai-whisper>=20250625
+# openai-whisper>=20250625  # Will be installed separately with PyTorch
 assemblyai>=0.35.0
 
 # Basic utilities
