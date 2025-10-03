@@ -18,8 +18,8 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Generate Prisma client
-RUN npx prisma generate
+# Create generated directory and generate Prisma client
+RUN mkdir -p src/generated && npx prisma generate
 
 # Build the Next.js app
 ENV NEXT_TELEMETRY_DISABLED=1

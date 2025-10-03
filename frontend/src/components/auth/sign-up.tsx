@@ -5,6 +5,7 @@ import { signUp } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
 
 export function SignUp() {
   const [name, setName] = useState("");
@@ -12,6 +13,7 @@ export function SignUp() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,7 +27,11 @@ export function SignUp() {
         name,
         callbackURL: "/",
       });
-      setMessage("Account created successfully! You can now sign in.");
+      setMessage("Account created successfully! Redirecting to home page...");
+      // Redirect to home page after successful signup
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1500);
     } catch (error: unknown) {
       setMessage(error instanceof Error ? error.message : "Failed to create account");
     } finally {

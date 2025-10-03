@@ -9,12 +9,14 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./frontend/src:/app/src:ro
-      - ./frontend/public:/app/public:ro
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
     environment:
       - NODE_ENV=development
       - NEXT_TELEMETRY_DISABLED=1
       - NEXT_PUBLIC_API_URL=http://localhost:8000
+      - BETTER_AUTH_SECRET=supoclip-dev-secret-key-2024-very-secure-and-unique-key-for-development-only
+      - BETTER_AUTH_URL=http://localhost:3000
     depends_on:
       - backend
     restart: unless-stopped

@@ -15,10 +15,12 @@ aiofiles>=23.2.0
 # Video processing (lighter alternatives)
 yt-dlp>=2025.7.21
 moviepy>=2.2.1
+opencv-python>=4.8.0
 
 # AI and transcription (lighter versions)
 # openai-whisper>=20250625  # Will be installed separately with PyTorch
 assemblyai>=0.35.0
+pydantic-ai>=0.0.14
 
 # Basic utilities
 numpy>=1.24.0

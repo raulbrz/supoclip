@@ -26,6 +26,10 @@ export function SignIn() {
         callbackURL: "/",
       });
       setMessage("Signed in successfully!");
+      // Redirect to home page after successful login
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1000);
     } catch (error: unknown) {
       setMessage(error instanceof Error ? error.message : "Failed to sign in");
     } finally {
