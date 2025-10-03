@@ -34,6 +34,8 @@ services:
       - ./backend/src:/app/src
       - uploads:/app/uploads
       - ./logs:/app/logs
+    env_file:
+      - .env
     environment:
       - PYTHONPATH=/app
       - PYTHONUNBUFFERED=1

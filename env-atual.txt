@@ -1,0 +1,83 @@
+# ===========================================
+# SUPOCLIP - CONFIGURAÇÃO DE AMBIENTE
+# ===========================================
+# Copie este arquivo para .env e configure as variáveis conforme necessário
+
+# ===========================================
+# CONFIGURAÇÕES DO BANCO DE DADOS
+# ===========================================
+# URL de conexão com PostgreSQL
+DATABASE_URL="postgresql+asyncpg://supoclip:supoclip_password@localhost:5432/supoclip"
+
+# ===========================================
+# CONFIGURAÇÕES DE AUTENTICAÇÃO
+# ===========================================
+# Chave secreta para JWT e sessões (gere uma chave segura)
+BETTER_AUTH_SECRET="your-secret-key-here-change-this-in-production"
+
+# URL base da aplicação
+BETTER_AUTH_URL="http://localhost:3000"
+
+# ===========================================
+# CONFIGURAÇÕES DE IA E PROCESSAMENTO
+# ===========================================
+# Modelo Whisper para transcrição (base, small, medium, large, large-v2, large-v3)
+WHISPER_MODEL="medium"
+
+# Modelo de LLM para análise de conteúdo
+LLM_MODEL="google-gla:gemini-2.5-flash-lite"
+
+# Chaves de API para serviços de IA
+OPENAI_API_KEY="your-openai-api-key"
+ANTHROPIC_API_KEY="your-anthropic-api-key"
+GOOGLE_API_KEY=AIzaSyCIoQoUT29XGuqyiDxY0IyVDtq8U91C...
+ASSEMBLY_AI_API_KEY=694346d738074b2787a1596eb73c7...
+
+# ===========================================
+# CONFIGURAÇÕES DE PROCESSAMENTO DE VÍDEO
+# ===========================================
+# Duração máxima do vídeo em segundos (padrão: 1 hora)
+MAX_VIDEO_DURATION=3600
+
+# Número máximo de clipes a serem gerados
+MAX_CLIPS=10
+
+# Duração de cada clipe em segundos
+CLIP_DURATION=30
+
+# Diretório de saída para arquivos processados
+OUTPUT_DIR="outputs"
+
+# Diretório temporário para processamento
+TEMP_DIR="temp"
+
+# ===========================================
+# CONFIGURAÇÕES DO REDIS (OPCIONAL)
+# ===========================================
+# URL de conexão com Redis para cache e filas
+REDIS_URL="redis://localhost:6379"
+
+# ===========================================
+# CONFIGURAÇÕES DE DESENVOLVIMENTO
+# ===========================================
+# Ambiente de execução
+NODE_ENV="development"
+
+# Desabilitar telemetria do Next.js
+NEXT_TELEMETRY_DISABLED=1
+
+# URL da API backend
+NEXT_PUBLIC_API_URL="http://localhost:8000"
+
+# URL base da aplicação frontend
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+
+# ===========================================
+# CONFIGURAÇÕES DE PRODUÇÃO
+# ===========================================
+# Para produção, configure as seguintes variáveis:
+# - BETTER_AUTH_SECRET: Use uma chave secreta forte
+# - DATABASE_URL: Use uma URL de banco de dados segura
+# - Todas as chaves de API: Configure com suas chaves reais
+# - NODE_ENV: Defina como "production"
+# - NEXT_PUBLIC_API_URL: Use a URL do seu domínio de produção
